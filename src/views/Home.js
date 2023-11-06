@@ -338,7 +338,7 @@ const Home = () => {
       >
         <View style={styles.paddingForHeader} />
         <View style={styles.scrollViewContent}>
-          <View style={{ paddingHorizontal: 20 }}>
+          <View style={{ paddingHorizontal: 10 }}>
             <FlatList
               numColumns={4}
               data={services}
@@ -355,14 +355,14 @@ const Home = () => {
                     source={item.image}
                     style={{ width: 60, height: 60, resizeMode: "contain" }}
                   />
-                  <Text style={{ fontSize: 12, textAlign: "center" }}>
+                  <Text style={{ fontSize: 12, textAlign: "center", height:30 }}>
                     {item.name}
                   </Text>
                 </View>
               )}
             />
           </View>
-          <View style={{ paddingHorizontal: 20 }}>
+          <View style={{ paddingHorizontal: 10 }}>
             <Text
               style={{ fontSize: 18, fontWeight: 600, paddingVertical: 20 }}
             >
@@ -397,7 +397,7 @@ const Home = () => {
               )}
             />
           </View>
-          <View style={{ paddingHorizontal: 20 }}>
+          <View style={{ paddingHorizontal: 10 }}>
             <Text
               style={{ fontSize: 18, fontWeight: 600, paddingVertical: 20 }}
             >
