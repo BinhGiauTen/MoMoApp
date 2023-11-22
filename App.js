@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import Tabs from './src/views/Tags';
-
+import Tags from './src/views/Tags';
+import ChuyenTien from './src/views/ChuyenTien';
 
 export default function App() {
   return (
     <NavigationContainer  >
-      <Tabs />
+      <ChuyenTien />
     </NavigationContainer>
   );
 }
