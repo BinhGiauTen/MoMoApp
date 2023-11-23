@@ -6,7 +6,8 @@ import ChonUuDai from './src/views/ChonUuDai'
 export default function App() {
   return (
     <NavigationContainer  >
-      <ChonUuDai/>
+      {/* <ChonUuDai/> */}
+      <Tags/>
     </NavigationContainer>
   );
 }
