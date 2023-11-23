@@ -67,11 +67,7 @@ export default function App({navigation}) {
             </View>
             <View style={{marginTop:20 ,height:55, backgroundColor:'#ffff', justifyContent: 'space-around', flexDirection:'row', alignItems: 'center', borderRadius:10}}>
                 <View>
-                    <Icon 
-                        name="ticket"
-                        size={30}
-                        color={"#BF1B74"}
-                    />
+                    <Icon name="ticket" size={30} color={"#BF1B74"}/>
                 </View>
                 <View>
                     <Text style={{fontSize:15, fontWeight:'bold'}}>Ăn uống quét QR ngân hàng</Text>
@@ -142,13 +138,13 @@ export default function App({navigation}) {
                 </View>
                 <Icon name="chevron-right" size={15} color={'black'}/>
             </View>
-            <View style={{width:150, height:45, backgroundColor:'white', flexDirection:'row', alignItems:'center', marginTop:20, zIndex:1, borderRadius:10}}>
+            <View style={{width:150, height:45, padding: 10 ,backgroundColor:'white', flexDirection:'row', alignItems:'center', marginTop:20, zIndex:1, borderRadius:5,shadowColor: '#000',shadowOffset: { width: 0, height: 1 }, shadowOpacity: 1, shadowRadius: 3,}}>
                 <Image
                     source={require('../images/phanHoi.png')}
                     style={{width:30, height:30, marginRight:20}}/>
                     <Text style={{fontSize:20, fontWeight:500, color:'#BF1B74'}}>Phản hồi</Text>
             </View>
-            <View style={{height:320, backgroundColor:'#ffff',marginTop: -10, borderRadius:10, padding:10}}>
+            <View style={{height:320, backgroundColor:'#ffff',marginTop: -20, borderRadius:10, padding:10}}>
                 <Image 
                     source={require('../images/quetNgay.png')}
                     style={{width:'100%', height:175, marginTop: 30}}
