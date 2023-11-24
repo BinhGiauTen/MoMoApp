@@ -4,9 +4,6 @@ import {
   TextInput,
   Image,
   ScrollView,
-  Dimensions,
-  FlatList,
-  RootTagContext,
   Pressable,
 } from "react-native";
 import React from "react";
