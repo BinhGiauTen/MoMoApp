@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import Tags from './src/views/Tags';
-import ChonUuDai from './src/views/ChonUuDai'
+import KetQuaGiaoDich from './src/views/KetQuaGiaoDich'
 
 export default function App() {
   return (
     <NavigationContainer  >
-      <ChonUuDai/>
+      <KetQuaGiaoDich/>
     </NavigationContainer>
   );
 }
