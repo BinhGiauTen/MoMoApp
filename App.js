@@ -6,7 +6,9 @@ import KetQuaGiaoDich from './src/views/KetQuaGiaoDich'
 export default function App() {
   return (
     <NavigationContainer  >
+
       <KetQuaGiaoDich/>
+
     </NavigationContainer>
   );
 }
