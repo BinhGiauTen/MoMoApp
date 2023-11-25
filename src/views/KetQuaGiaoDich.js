@@ -1,14 +1,37 @@
 import { View, Text,StyleSheet,Pressable,Image } from 'react-native'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { ScrollView } from 'react-native-web';
 
-const KetQUaGiaoDich = () => {
+const KetQUaGiaoDich = ({route,navigation}) => {
+    const { data, tien } = route.params;
+    const handleUpdateItemName = (itemId, newTien) => {
+    fetch(`https://6540bd5245bedb25bfc27ba1.mockapi.io/api/lab7/userMoMo/${itemId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ tien: newTien }),
+    })
+      .then(() => {
+        // Cập nhật trạng thái bằng cách cập nhật tên của mục cần cập nhật
+        const updatedData = data.map((item) => {
+          if (item.id === itemId) {
+            return { ...item, tien: newTien };
+          }
+          return item;
+        });
+        setData(updatedData);
+      })
+      .catch((error) => console.error(error));
+  };
   return (
     <ScrollView style={styles.container}>
       <View style={{height:150, backgroundColor:'#BF1B74', flexDirection:'row',alignItems: 'center', padding: 10}}>
             <Text style={{fontSize:20, fontWeight: 600, color: 'white', marginLeft:105, marginTop:-50}}>Kết Quả Giao Dịch</Text>
-            <Pressable style={{justifyContent:'center', alignItems: 'center', borderRadius:50, height:40, width:40, marginLeft:50,marginTop:-50}}>
+            <Pressable 
+            onPress={()=>{navigation.navigate('Home')}}
+            style={{justifyContent:'center', alignItems: 'center', borderRadius:50, height:40, width:40, marginLeft:50,marginTop:-50}}>
                 <Icon name="home" size={28} color="white" />
             </Pressable>
       </View>
@@ -20,7 +43,7 @@ const KetQUaGiaoDich = () => {
       <View style={{padding:20}}>
         <View style={{height:480, backgroundColor:'#fff', marginTop:-50, borderRadius:10,shadowColor: '#000',shadowOffset: { width: 0, height: 1 }, shadowOpacity: 1, shadowRadius: 3, justifyContent:'center', alignItems: 'center', padding:10}}>
             <Text style={{fontSize:18, fontWeight:'bold'}}>Giao dịch thành công</Text>
-            <Text style={{fontSize:20, fontWeight:'bold'}}>300.000đ</Text>
+            <Text style={{fontSize:20, fontWeight:'bold'}}>{tien}đ</Text>
             <View style={{flexDirection:'row', justifyContent:'space-between', width:'100%', marginTop:10}}>
                 <Text style={{color:'gray'}}>Thời gian thanh toán</Text>
                 <Text style={{fontWeight:650}}>12:53 - 22/10/2023</Text>
@@ -36,15 +59,15 @@ const KetQUaGiaoDich = () => {
                 </View>
                 <View style={{flexDirection:'row', justifyContent: 'space-between', marginBottom:14}}>
                     <Text style={{color:'gray', fontWeight:600}}>Người nhận</Text>
-                    <Text style={{fontWeight:650}}>Nguyễn Trọng Ngọc</Text>
+                    <Text style={{fontWeight:650}}>{data.hoVaTen}</Text>
                 </View>
                 <View style={{flexDirection:'row', justifyContent: 'space-between', marginBottom:14}}>
                     <Text style={{color:'gray', fontWeight:600}}>Tên danh bạ</Text>
-                    <Text style={{fontWeight:650}}>Trọng</Text>
+                    <Text style={{fontWeight:650}}>{data.ten}</Text>
                 </View>
                 <View style={{flexDirection:'row', justifyContent: 'space-between', marginBottom:14}}>
                     <Text style={{color:'gray', fontWeight:600}}>SĐT</Text>
-                    <Text style={{fontWeight:650}}>0987654321</Text>
+                    <Text style={{fontWeight:650}}>{data.sdt}</Text>
                 </View>
                 <View style={{flexDirection:'row', justifyContent: 'space-between', marginBottom:14}}>
                     <Text style={{color:'gray', fontWeight:600}}>Loại giao dịch</Text>
@@ -52,7 +75,7 @@ const KetQUaGiaoDich = () => {
                 </View>
             </View>
             <View style={{flexDirection:'row', justifyContent: 'space-between', width:'100%', marginTop:20, alignItems:'center', padding:20}}>
-                <Pressable>
+                <Pressable onPress={()=>{navigation.navigate('ChuyenTien')}}>
                     <Text style={{fontWeight:650}}>Chuyển thêm</Text>
                 </Pressable>
                 <Pressable style={{width:150, height:40, borderColor:'#D23A8C', borderWidth:1, borderRadius:10, justifyContent: 'center', alignItems: 'center'}}>

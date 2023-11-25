@@ -27,7 +27,7 @@ export default function App({navigation}) {
                 </View>
                 <View style={{justifyContent:'center', alignItems: 'center'}}>
                     <View style={{width:40, height:40, backgroundColor:'#D9D9D9', borderRadius:50, justifyContent:'center', alignItems:'center'}}>
-                        <Text style={{color: '#BF1B74', fontWeight:700, fontSize:16}}>T</Text>
+                        <Text style={{color: '#BF1B74', fontWeight:700, fontSize:16}}>B</Text>
                     </View>
                 </View>
             </View>
@@ -55,12 +55,14 @@ export default function App({navigation}) {
                     numColumns={4}
                     renderItem={({item})=>{
                         return (
-                            <View style={{alignItems: 'center', margin:18, justifyContent: 'center'}}>
+                            <Pressable
+                            onPress={()=>{navigation.navigate('ChiTietChuyenTien', {data:item})}}
+                            style={{alignItems: 'center', margin:18, justifyContent: 'center'}}>
                                 <View style={{width:50, height:50, borderRadius:50, backgroundColor:'#FFF0F5', marginBottom:10, justifyContent: 'center', alignItems: 'center'}}>
                                     <Text style={{fontWeight:700, color:'#BF1B74'}}>{item.ten.charAt(0)}</Text>
                                 </View>
                                 <Text style={{fontSize:16, fontWeight:'bold'}}>{item.ten}</Text>
-                            </View>
+                            </Pressable>
                         )
                     }}
                 />
