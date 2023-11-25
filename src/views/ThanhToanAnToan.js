@@ -113,7 +113,7 @@ const ThanhToanAnToan = ({route,navigation}) => {
                     <Text style={{fontSize:15, fontWeight:600, }}>Tổng tiền</Text>
                     <Text style={{fontSize:20, fontWeight:600, }}>{tien}đ</Text>
                 </View>
-                <View style={{backgroundColor:'#D82D8B', height:60, marginTop:20, borderRadius:10,justifyContent: 'center', alignItems:'center'}}>
+                <View style={{backgroundColor:'#D82D8B', height:60, marginVertical:20, borderRadius:10,justifyContent: 'center', alignItems:'center'}}>
                     <Pressable 
                     onPress={()=>{
                         navigation.navigate('KetQuaGiaoDich',

@@ -6,10 +6,19 @@ import { TextInputMask } from 'react-native-masked-text';
 const NhapChuyenTien = ({route,navigation}) => {
     const { data } = route.params;
     const [tien, setTien] = useState('');
+    //Xóa số tiền đã nhập
     const handleSetDefaultValue = () => {
-        // Thiết lập giá trị mặc định cho TextInput
         setTien('');
+    };
+    const checkGiaTriNhap = () => {
+        const isValidInput = tien.trim().length > 0;
+        if (isValidInput) {
+            navigation.navigate('ThanhToanAnToan',{data:data, tien: tien})
+        } else {
+            Alert.alert('Thông báo', 'Vui lòng nhập số tiền');
+        }
       };
+
   return (
     <View style={styles.container}>
       <View style={{height:130, backgroundColor:'#BF1B74'}}>
@@ -71,7 +80,7 @@ const NhapChuyenTien = ({route,navigation}) => {
       </View>
       <View style={{justifyContent: 'center', alignItems: 'center', position:'absolute', width: '100%', bottom:10}}>
         <Pressable 
-        onPress={()=>{navigation.navigate('ThanhToanAnToan',{data:data, tien: tien})}}
+        onPress={checkGiaTriNhap}
         style={{width:'80%', height:50, backgroundColor:'#D82D8B', justifyContent: 'center', alignItems: 'center', borderRadius:10}}>
             <Text style={{color:'#fff', fontSize:20, fontWeight:500}}>Chuyển tiền</Text>
         </Pressable>
