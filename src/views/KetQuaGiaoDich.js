@@ -5,26 +5,19 @@ import { ScrollView } from 'react-native-web';
 
 const KetQUaGiaoDich = ({route,navigation}) => {
     const { data, tien } = route.params;
-    const handleUpdateItemName = (itemId, newTien) => {
-    fetch(`https://6540bd5245bedb25bfc27ba1.mockapi.io/api/lab7/userMoMo/${itemId}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ tien: newTien }),
-    })
-      .then(() => {
-        // Cập nhật trạng thái bằng cách cập nhật tên của mục cần cập nhật
-        const updatedData = data.map((item) => {
-          if (item.id === itemId) {
-            return { ...item, tien: newTien };
-          }
-          return item;
-        });
-        setData(updatedData);
-      })
-      .catch((error) => console.error(error));
-  };
+    const [currentHour, setCurrentHour] = useState(new Date().getHours());
+    const [currentMinute, setCurrentMinute] = useState(new Date().getMinutes());
+    const [currentTime,setCurrentTime] = useState(new Date())
+    //const dateString = currentTime.toDateString();
+    // Format date as dd/MM/yyyy
+    const dateFormat = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+
+    const formattedDate = dateFormat.format(currentTime);
+
   return (
     <ScrollView style={styles.container}>
       <View style={{height:150, backgroundColor:'#BF1B74', flexDirection:'row',alignItems: 'center', padding: 10}}>
@@ -46,7 +39,7 @@ const KetQUaGiaoDich = ({route,navigation}) => {
             <Text style={{fontSize:20, fontWeight:'bold'}}>{tien}đ</Text>
             <View style={{flexDirection:'row', justifyContent:'space-between', width:'100%', marginTop:10}}>
                 <Text style={{color:'gray'}}>Thời gian thanh toán</Text>
-                <Text style={{fontWeight:650}}>12:53 - 22/10/2023</Text>
+                <Text style={{fontWeight:650}}>{currentHour}:{currentMinute < 10 ? '0' : ''}{currentMinute} - {formattedDate}</Text>
             </View>
             <View style={{flexDirection:'row', justifyContent:'space-between', width:'100%', marginTop:10}}>
                 <Text style={{color:'gray'}}>Chi tiết giao dịch</Text>
@@ -84,7 +77,7 @@ const KetQUaGiaoDich = ({route,navigation}) => {
             </View>
         </View>
       </View>
-      <View style={{width:300, height:110, marginLeft:20,padding:20, borderRadius:10, borderWidth:1, borderColor:'gray'}}>
+      <View style={{width:300, height:110, marginLeft:20,padding:20, borderRadius:10, borderWidth:1, borderColor:'gray', marginBottom:30}}>
         <Text style={{fontWeight:'bold', fontSize:15, marginBottom:20}}>Yayy!Bạn đã nhận được</Text>
         <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
             <Icon name="image" size={35} color={"orange"}/>

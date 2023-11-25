@@ -3,8 +3,9 @@ import React, {useState, useEffect} from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ThanhToanAnToan = ({route,navigation}) => {
- const { data, tien } = route.params;
- console.log(tien)
+    const { data, tien } = route.params;
+    
+    
   return (
     <ScrollView style={styles.container}>
       <View style={{height:100, backgroundColor:'#BF1B74', flexDirection:'row',alignItems: 'center', padding: 10}}>
@@ -33,7 +34,7 @@ const ThanhToanAnToan = ({route,navigation}) => {
                 />
                 <View style={{marginLeft:20}}>
                     <Text style={{fontSize:13, fontWeight:'bold'}}>Ví MoMo</Text>
-                    <Text style={{fontSize:13, fontWeight:600, color:'gray'}}>{data.tien}</Text>
+                    <Text style={{fontSize:13, fontWeight:600, color:'gray'}}>3.100.000đ</Text>
                 </View>
             </View>
             <View style={{height:70, width:150, borderWidth:1, borderColor:'gray', borderRadius:10, flexDirection:'row', justifyContent:'center', alignItems:'center', marginLeft:20}}>
@@ -95,7 +96,15 @@ const ThanhToanAnToan = ({route,navigation}) => {
                 </View>
                 <View style={{backgroundColor:'#D82D8B', height:60, marginTop:20, borderRadius:10,justifyContent: 'center', alignItems:'center'}}>
                     <Pressable 
-                    onPress={()=>{navigation.navigate('KetQuaGiaoDich',{data:data, tien:tien})}}
+                    onPress={()=>{
+                        navigation.navigate('KetQuaGiaoDich',
+                                            {
+                                                data:data, 
+                                                tien:tien
+                                            })
+                        handleUpdateItemMoney(data.id, tien)
+
+                    }}
                     style={{width:'100%', height:'100%',flexDirection:'row', justifyContent: 'center', alignItems:'center'}}> 
                         <Icon name="lock" size={30} color="white" />
                         <Text style={{fontSize:18, fontWeight:'bold', color:'white', marginLeft:20}}>Xác nhận</Text>
