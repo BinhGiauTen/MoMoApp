@@ -4,7 +4,26 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ThanhToanAnToan = ({route,navigation}) => {
     const { data, tien } = route.params;
-    
+    const soTien = parseFloat(tien.replace(/\./g, ''));
+    const [money, setMoney] = useState(parseFloat(data.tien) + parseFloat(soTien))
+    //update tiền cho người nhận
+    const handleUpdateItemName = (itemId, newTien) => {
+    fetch(`https://6540bd5245bedb25bfc27ba1.mockapi.io/api/lab7/userMoMo/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ tien: newTien }),
+        })
+        .then(() => {
+            if (response.ok) {
+            console.log('Update successful');
+            } else {
+            console.error('Update failed:');
+            }
+        })
+        .catch((error) => console.error(error));
+    };
     
   return (
     <ScrollView style={styles.container}>
@@ -102,7 +121,7 @@ const ThanhToanAnToan = ({route,navigation}) => {
                                                 data:data, 
                                                 tien:tien
                                             })
-                        handleUpdateItemMoney(data.id, tien)
+                                            handleUpdateItemName(data.id, money)
 
                     }}
                     style={{width:'100%', height:'100%',flexDirection:'row', justifyContent: 'center', alignItems:'center'}}> 

@@ -8,15 +8,16 @@ const KetQUaGiaoDich = ({route,navigation}) => {
     const [currentHour, setCurrentHour] = useState(new Date().getHours());
     const [currentMinute, setCurrentMinute] = useState(new Date().getMinutes());
     const [currentTime,setCurrentTime] = useState(new Date())
-    //const dateString = currentTime.toDateString();
+
     // Format date as dd/MM/yyyy
     const dateFormat = new Intl.DateTimeFormat('en-GB', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
     });
-
     const formattedDate = dateFormat.format(currentTime);
+    
+    
 
   return (
     <ScrollView style={styles.container}>
