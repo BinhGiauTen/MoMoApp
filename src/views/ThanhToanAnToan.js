@@ -53,7 +53,7 @@ const ThanhToanAnToan = ({route,navigation}) => {
                 />
                 <View style={{marginLeft:20}}>
                     <Text style={{fontSize:13, fontWeight:'bold'}}>Ví MoMo</Text>
-                    <Text style={{fontSize:13, fontWeight:600, color:'gray'}}>3.100.000đ</Text>
+                    <Text style={{fontSize:13, fontWeight:600, color:'gray'}}>1.051.626</Text>
                 </View>
             </View>
             <View style={{height:70, width:150, borderWidth:1, borderColor:'gray', borderRadius:10, flexDirection:'row', justifyContent:'center', alignItems:'center', marginLeft:20}}>

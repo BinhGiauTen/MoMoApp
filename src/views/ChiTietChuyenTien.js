@@ -1,7 +1,9 @@
-import { View, Text, StyleSheet, Pressable, Image, TextInput } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Image, TextInput, Alert  } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React, {useState, useEffect} from 'react';
 import { TextInputMask } from 'react-native-masked-text';
+
+
 
 const NhapChuyenTien = ({route,navigation}) => {
     const { data } = route.params;
@@ -12,10 +14,11 @@ const NhapChuyenTien = ({route,navigation}) => {
     };
     const checkGiaTriNhap = () => {
         const isValidInput = tien.trim().length > 0;
-        if (isValidInput) {
+        if (isValidInput && tien<= 1051626) {
             navigation.navigate('ThanhToanAnToan',{data:data, tien: tien})
         } else {
-            Alert.alert('Thông báo', 'Vui lòng nhập số tiền');
+            console.log("Thất bại");
+            Alert.alert('Thất bại', 'Thông báo không thành công!');
         }
       };
 
@@ -79,10 +82,19 @@ const NhapChuyenTien = ({route,navigation}) => {
         </View>
       </View>
       <View style={{justifyContent: 'center', alignItems: 'center', position:'absolute', width: '100%', bottom:10}}>
-        <Pressable 
-        onPress={checkGiaTriNhap}
-        style={{width:'80%', height:50, backgroundColor:'#D82D8B', justifyContent: 'center', alignItems: 'center', borderRadius:10}}>
-            <Text style={{color:'#fff', fontSize:20, fontWeight:500}}>Chuyển tiền</Text>
+      <Pressable
+          onPress={checkGiaTriNhap}
+          style={({ pressed }) => ({
+            width: '80%',
+            height: 50,
+            backgroundColor: pressed || tien.trim().length === 0 ? '#A0A0A0' : '#D82D8B',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 10,
+          })}
+          disabled={tien.trim().length === 0}
+        >
+          <Text style={{ color: '#fff', fontSize: 20, fontWeight: 500 }}>Chuyển tiền</Text>
         </Pressable>
       </View>
     </View>
