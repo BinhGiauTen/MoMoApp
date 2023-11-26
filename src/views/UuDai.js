@@ -92,7 +92,7 @@ const UuDai = () => {
       </View>
       <ScrollView onScroll={handleScroll} scrollEventThrottle={16}>
         <View style={{ height: 42 }}></View>
-        <View style={{ height: windowHeight * 2, backgroundColor: "#F2F1F6" }}>
+        <View style={{ height: 670 , backgroundColor: "#F2F1F6" }}>
           <ImageBackground
             source={require("../images/BDUuDai.png")}
             resizeMode="contain"
@@ -252,6 +252,7 @@ const UuDai = () => {
             />
           </View>
         </View>
+        <View style={{height: 60}}></View>
       </ScrollView>
     </View>
   );

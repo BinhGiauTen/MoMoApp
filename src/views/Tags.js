@@ -18,7 +18,7 @@ const Tabs = () => {
         tabBarStyle: { position: "absolute", height: 60, borderTopWidth: 0 ,paddingLeft:10, paddingRight:10},
         headerShown: false,
       }}
-      initialRouteName="Toi"
+      initialRouteName="Home"
     >
       <Tab.Screen
         name="Home"

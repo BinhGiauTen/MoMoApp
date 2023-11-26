@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Tags from './src/views/Tags';
 import Home from './src/views/Home';
 import KetQuaGiaoDich from './src/views/KetQuaGiaoDich'
 import ChonUuDai from './src/views/ChonUuDai'
@@ -13,7 +14,8 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='ChuyenTien' >
+      <Stack.Navigator initialRouteName='Tags' >
+      <Stack.Screen name="Tags" component={Tags} options={{headerShown: false}}/>
         <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
         <Stack.Screen name="KetQuaGiaoDich" component={KetQuaGiaoDich} options={{headerShown: false}}/>
         <Stack.Screen name="ChonUuDai" component={ChonUuDai} options={{headerShown: false}}/>

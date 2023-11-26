@@ -17,7 +17,7 @@ export default function App({navigation}) {
     <ScrollView style={styles.container}>
         <View style={{backgroundColor:'#BF1B74', height:150, padding: 10}}>
             <View style={{ flexDirection:'row', justifyContent:'space-between', flex:1}}>
-                <Pressable style={{justifyContent:'center', alignItems: 'center'}}>
+                <Pressable style={{justifyContent:'center', alignItems: 'center'}} onPress={()=>{navigation.navigate('Tags')}}>
                     <Image 
                         source={{uri: 'https://img.mservice.com.vn/momo_app_v2/new_version/img/appx_icon/16_arrow_chevron_left_small.png'}} 
                         style={{width:40, height:40}}/>

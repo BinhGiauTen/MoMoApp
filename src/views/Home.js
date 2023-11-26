@@ -11,15 +11,14 @@ import {
   Animated,
   FlatList,
   Pressable,
+  TouchableOpacity,
 } from "react-native";
 import React, { useRef, useState } from "react";
-const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get("window").height;
 const UPPER_HEADER_HEIGHT = 40;
 const LOWER_HEADER_HEIGHT = 96;
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
-const Home = () => {
+const Home = ({navigation}) => {
   const animateValue = useRef(new Animated.Value(0)).current;
   const searchInputAnimation = {
     transform: [
@@ -151,6 +150,7 @@ const Home = () => {
     {
       image: require("../images/ChuyenTien.png"),
       name: "Chuyển tiền",
+      type: "ChuyenTien"
     },
     {
       image: require("../images/ChuyenTienNganHang.png"),
@@ -343,7 +343,8 @@ const Home = () => {
               numColumns={4}
               data={services}
               renderItem={({ item }) => (
-                <View
+                <TouchableOpacity
+                  onPress = {() => navigation.navigate(item.type)}
                   style={{
                     width: "25%",
                     height: 90,
@@ -358,7 +359,7 @@ const Home = () => {
                   <Text style={{ fontSize: 12, textAlign: "center", height:30 }}>
                     {item.name}
                   </Text>
-                </View>
+                </TouchableOpacity>
               )}
             />
           </View>
@@ -461,6 +462,7 @@ const Home = () => {
             />
           </View>
         </View>
+        <View style={{height: 60}}></View>
       </ScrollView>
       
     </View>
@@ -479,7 +481,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#325340",
   },
   scrollViewContent: {
-    height: windowHeight * 2,
+    height: 740,
     backgroundColor: "#fff",
   },
   paddingForHeader: {

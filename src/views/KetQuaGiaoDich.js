@@ -24,7 +24,7 @@ const KetQUaGiaoDich = ({route,navigation}) => {
       <View style={{height:150, backgroundColor:'#BF1B74', flexDirection:'row',alignItems: 'center', padding: 10}}>
             <Text style={{fontSize:20, fontWeight: 600, color: 'white', marginLeft:105, marginTop:-50}}>Kết Quả Giao Dịch</Text>
             <Pressable 
-            onPress={()=>{navigation.navigate('Home')}}
+            onPress={()=>{navigation.navigate('Tags')}}
             style={{justifyContent:'center', alignItems: 'center', borderRadius:50, height:40, width:40, marginLeft:50,marginTop:-50}}>
                 <Icon name="home" size={28} color="white" />
             </Pressable>
